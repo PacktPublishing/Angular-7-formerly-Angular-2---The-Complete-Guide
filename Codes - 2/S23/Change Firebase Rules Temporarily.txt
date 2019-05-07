@@ -1,0 +1,10 @@
+Change Firebase Rules Temporarily
+Section 23, Lecture 307
+For the moment, you need to adjust your Firebase rules to ensure that you're still able to fetch and store data (since we're currently not passing the token to the backend).
+
+{
+  "rules": {
+    ".read": "true",
+    ".write": "true"
+  }
+}

@@ -1,0 +1,3 @@
+Useful Resources & Links
+Section 23, Lecture 312
+Link to official HttpClient Documentation: https://angular.io/guide/http

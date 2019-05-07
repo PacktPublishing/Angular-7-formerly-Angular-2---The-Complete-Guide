@@ -1,0 +1,36 @@
+Using NgRx Effects with NgRx >= 7
+Section 24, Lecture 339
+Important: In the next lecture, I'll introduce the ofType method to filter for actions.
+
+As of NgRx v7, this method is not available like this anymore. Instead, you now have to use pipe().
+
+So
+
+import { Effect, Actions } from '@ngrx/effects';
+ 
+@Injectable()
+export class MyEffects {
+  @Effect()
+  someEffect$: Observable<Action> = this.actions$
+    .ofType(UserActions.LOGIN)
+    .pipe(map(() => new AnotherAction()));
+ 
+  constructor(private actions$: Actions) {}
+}
+becomes
+
+import { Effect, Actions, ofType } from '@ngrx/effects'; // import ofType operator
+ 
+@Injectable()
+export class MyEffects {
+  @Effect()
+  someEffect$: Observable<Action> = this.actions$.pipe(
+    ofType(UserActions.LOGIN), // use the pipeable ofType operator
+    map(() => new AnotherAction())
+  );
+ 
+  constructor(private actions$: Actions) {}
+}
+(also notice the extra import of ofType from @ngrx/effects).
+
+That's it! Also see: https://ngrx.io/guide/migration/v7

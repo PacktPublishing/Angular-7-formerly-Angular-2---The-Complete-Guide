@@ -1,0 +1,16 @@
+Module Import Order
+Section 21, Lecture 276
+In the next module, we'll add routes to a feature module. For this to work, you need to ensure that you get the import order (i.e. the order in which you add all modules to the imports[]  array in the AppModule ) right.
+
+To be precise - unlike as shown in the video - you need to position your RecipesModule  prior to the AppRoutingModule .
+
+So imports[]  should look like this (in AppModule ):
+
+imports: [
+    ..., // Other modules
+    RecipesModule,
+    AppRoutingModule
+]
+This is required to ensure that the Catch-all/ wildcard routes work correctly.
+
+Why does it work in the video (even though I DON'T use that setup there)? Because I recorded this without the wildcard route - a mistake from my side.
